@@ -12,28 +12,24 @@ export class SearchBar extends Component {
     searchValue: '',
   };
 
-  search =  (event )=>{
-    
-    this.setState ({searchValue:  event.currentTarget.value  })
-  }
+  search = event => {
+    this.setState({ searchValue: event.currentTarget.value });
+  };
   render() {
     return (
       <>
         <SearchBarHeader>
           <SearchForm>
             <SearchFormButton type="submit">
-              <SearchFormButtonLabel class="button-label">
-                Search
-              </SearchFormButtonLabel>
+              <SearchFormButtonLabel>Search</SearchFormButtonLabel>
             </SearchFormButton>
 
             <Input
-            onChange={this.search}
-            value={this.state.searchValue}
-              class="input"
+              onChange={this.search}
+              value={this.state.searchValue}
               type="text"
               autocomplete="off"
-              autofocus
+              autoFocus
               placeholder="Search images and photos"
             />
           </SearchForm>
