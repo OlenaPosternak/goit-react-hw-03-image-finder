@@ -1,5 +1,5 @@
 import { AppStyled } from './App.module';
-import axios from 'axios';
+// import axios from 'axios';
 import { Component } from 'react';
 // import {REACT_APP_API_KEY} from '../API_KEY'
 import { SearchBar } from './SearchBar/SearchBar';
