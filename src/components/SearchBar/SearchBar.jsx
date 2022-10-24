@@ -7,20 +7,42 @@ import {
   Input,
 } from './SearchBar.module';
 
+import { IoIosSearch } from 'react-icons/io';
+import { toast } from 'react-toastify';
+
 export class SearchBar extends Component {
   state = {
     searchValue: '',
   };
 
   search = event => {
-    this.setState({ searchValue: event.currentTarget.value });
+    this.setState({ searchValue: event.currentTarget.value.toLowerCase() });
   };
+
+  reset = () => {
+    this.setState({ searchValue: '' });
+  };
+
+  handelSubmit = event => {
+    event.preventDefault();
+
+    if (this.state.searchValue.trim() === ``) {
+      toast.error('Please choose picture', { theme: 'colored' });
+      return;
+    }
+
+    this.props.onSearch(this.state.searchValue);
+    this.setState({searchValue:''})
+    this.reset();
+  };
+
   render() {
     return (
       <>
         <SearchBarHeader>
-          <SearchForm>
+          <SearchForm onSubmit={this.handelSubmit}>
             <SearchFormButton type="submit">
+              <IoIosSearch size="24" />
               <SearchFormButtonLabel>Search</SearchFormButtonLabel>
             </SearchFormButton>
 
