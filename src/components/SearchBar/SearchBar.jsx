@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+
 import { Component } from 'react';
 import {
   SearchBarHeader,
@@ -32,7 +34,7 @@ export class SearchBar extends Component {
     }
 
     this.props.onSearch(this.state.searchValue);
-    this.setState({searchValue:''})
+    this.setState({ searchValue: '' });
     this.reset();
   };
 
@@ -60,3 +62,8 @@ export class SearchBar extends Component {
     );
   }
 }
+
+SearchBar.propTypes = {
+  searchValue: PropTypes.string,
+  onSearch: PropTypes.func,
+};

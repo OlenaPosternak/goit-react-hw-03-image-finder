@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+
 import { Component } from 'react';
 import { Overlay, ModalWindow } from './Modal.module';
 
@@ -31,3 +33,8 @@ export class Modal extends Component {
     );
   }
 }
+
+Modal.propType = {
+  onClose: PropTypes.func,
+  largeImageURL: PropTypes.string,
+};

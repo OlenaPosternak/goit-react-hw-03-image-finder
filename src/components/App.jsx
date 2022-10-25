@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+
 import { ToastContainer } from 'react-toastify';
 import { SearchBar } from './SearchBar/SearchBar';
 import { ImageGallery } from './ImageGallery/ImageGallery';
@@ -25,4 +27,11 @@ export class App extends Component {
       </AppStyled>
     );
   }
+}
+
+App.propType ={
+    searchValue: PropTypes.string,
+    onSubmitSerach: PropTypes.func,
+    
+
 }

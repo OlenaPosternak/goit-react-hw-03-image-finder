@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+
 import { Component } from 'react';
 import { Item } from '../ImageGalleryItem/ImageGalleryItem';
 import { AllGallery } from './ImageGallery.mudule';
@@ -65,3 +67,16 @@ export class ImageGallery extends Component {
     );
   }
 }
+
+ImageGallery.propType = {
+  data: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string,
+      webformatURL: PropTypes.string,
+      tags: PropTypes.string,
+      largeImageURL: PropTypes.string,
+    })
+  ),
+  page: PropTypes.number,
+  loading: PropTypes.bool,
+};

@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+
 import { ImageGalleryItem, ItemImage } from './ImageGalleryItem.module';
 import { Modal } from '../Modal/Modal';
 import { Component } from 'react';
@@ -27,3 +29,11 @@ export class Item extends Component {
     );
   }
 }
+
+Item.propType = {
+  isModalOpen: PropTypes.bool,
+  onCloseModal: PropTypes.func,
+  srcLarge: PropTypes.string,
+  src: PropTypes.string,
+  tags: PropTypes.string,
+};
