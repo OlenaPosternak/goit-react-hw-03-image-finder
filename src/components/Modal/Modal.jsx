@@ -13,17 +13,20 @@ export class Modal extends Component {
   pressESC = e => {
     if (e.code === `Escape`) {
       this.props.onClose();
+      console.log(`клікнули ESC`)
     }
   };
 
-  onBackDropClic = e => {
+  onBackDropClick = e => {
     if (e.currentTarget === e.target) {
+      console.log(`клік у бекдроп`);
+      console.log(this.props);
       this.props.onClose();
     }
   };
   render() {
     return (
-      <Overlay onClick={this.onBackDropClic}>
+      <Overlay onClick={this.onBackDropClick}>
         <ModalWindow>
           <img src={this.props.largeImageURL} alt="" />
         </ModalWindow>

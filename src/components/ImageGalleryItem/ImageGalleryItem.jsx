@@ -8,14 +8,20 @@ export class Item extends Component {
   };
 
   onOpenModal = () => this.setState({ isModalOpen: true });
-  onCloseModal = () => this.setState({ isModalOpen: false});
+  onCloseModal = () => this.setState({ isModalOpen: false });
 
   render() {
     return (
       <>
+        {this.state.isModalOpen && (
+          <Modal
+            onClose={this.onCloseModal}
+            largeImageURL={this.props.srcLarge}
+          />
+        )}
+
         <ImageGalleryItem onClick={this.onOpenModal}>
           <ItemImage src={this.props.src} alt={this.props.tags} />
-          {this.state.isModalOpen && <Modal onClose={this.onCloseModal} largeImageURL={this.props.srcLarge}/>}
         </ImageGalleryItem>
       </>
     );
