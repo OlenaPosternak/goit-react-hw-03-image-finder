@@ -92,4 +92,5 @@ ImageGallery.propType = {
   ),
   page: PropTypes.number,
   loading: PropTypes.bool,
+  totalPictures: PropTypes.number,
 };
