@@ -13,14 +13,11 @@ export class Modal extends Component {
   pressESC = e => {
     if (e.code === `Escape`) {
       this.props.onClose();
-      console.log(`клікнули ESC`)
     }
   };
 
   onBackDropClick = e => {
     if (e.currentTarget === e.target) {
-      console.log(`клік у бекдроп`);
-      console.log(this.props);
       this.props.onClose();
     }
   };

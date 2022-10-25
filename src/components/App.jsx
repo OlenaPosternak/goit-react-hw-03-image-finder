@@ -7,8 +7,6 @@ import { Component } from 'react';
 
 import 'react-toastify/dist/ReactToastify.css';
 
-
-
 export class App extends Component {
   state = {
     searchValue: '',
@@ -24,7 +22,7 @@ export class App extends Component {
         <SearchBar onSearch={this.onSubmitSerach} />
         <ImageGallery galleryName={this.state.searchValue} />
         <ToastContainer autoClose={3000} closeOnClick />
-        </AppStyled>
+      </AppStyled>
     );
   }
 }
