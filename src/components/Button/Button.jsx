@@ -1,4 +1,4 @@
 import { Button } from "./Button.module"
-export const ButtonMore = ()=>{
-    return    (<Button type="submit">Load more</Button>)
+export const ButtonMore = ({onClic})=>{
+    return    (<Button type="button" onClick={onClic}>Load more</Button>)
 }

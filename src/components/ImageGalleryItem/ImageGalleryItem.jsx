@@ -1,14 +1,23 @@
-import {ImageGalleryItem, ItemImage} from './ImageGalleryItem.module';
+import { ImageGalleryItem, ItemImage } from './ImageGalleryItem.module';
+import { Modal } from '../Modal/Modal';
+import { Component } from 'react';
 
-export const Item = ({ gallery }) => {
-  console.log(gallery);
-  return (
-    <>
-      {gallery.map(({ id, webformatURL, tags }) => (
-        <ImageGalleryItem key={id}>
-          <ItemImage src={webformatURL} alt={tags} />
+export class Item extends Component {
+  state = {
+    isModalOpen: false,
+  };
+
+  onOpenModal = () => this.setState({ isModalOpen: true });
+  onCloseModal = () => this.setState({ isModalOpen: false});
+
+  render() {
+    return (
+      <>
+        <ImageGalleryItem onClick={this.onOpenModal}>
+          <ItemImage src={this.props.src} alt={this.props.tags} />
+          {this.state.isModalOpen && <Modal onClose={this.onCloseModal} largeImageURL={this.props.srcLarge}/>}
         </ImageGalleryItem>
-      ))}
-    </>
-  );
-};
+      </>
+    );
+  }
+}
