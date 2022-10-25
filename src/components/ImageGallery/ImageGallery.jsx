@@ -12,12 +12,18 @@ export class ImageGallery extends Component {
     data: [],
     page: 1,
     loading: false,
+    totalPictures: 1,
   };
 
   async componentDidUpdate(prevProps, prevState) {
     if (this.props.galleryName !== prevProps.galleryName) {
       this.setState({ page: 1 });
     }
+    if (
+        this.props.galleryName !== prevProps.galleryName) {
+        this.setState({ data: [] });
+
+      }
     if (
       this.props.galleryName !== prevProps.galleryName ||
       this.state.page !== prevState.page
@@ -33,9 +39,16 @@ export class ImageGallery extends Component {
             orientation: `horizontal`,
             per_page: 12,
           },
+          
         });
 
-        this.setState({ data: responce.data.hits });
+        console.log(responce);
+        this.setState(prevState => ({
+          data: [...prevState.data, ...responce.data.hits],
+          totalPictures: responce.data.totalHits,
+        }));
+        
+
       } catch (error) {
         console.log(error);
       } finally {
@@ -62,7 +75,7 @@ export class ImageGallery extends Component {
             />
           ))}
         </AllGallery>
-        {this.state.data.length !== 0 && <ButtonMore onClic={this.loadMore} />}
+        {this.state.data.length !== 0 && (Math.floor(this.state.totalPictures / 12) > this.state.page ) && <ButtonMore onClic={this.loadMore} />}
       </>
     );
   }
