@@ -19,11 +19,9 @@ export class ImageGallery extends Component {
     if (this.props.galleryName !== prevProps.galleryName) {
       this.setState({ page: 1 });
     }
-    if (
-        this.props.galleryName !== prevProps.galleryName) {
-        this.setState({ data: [] });
-
-      }
+    if (this.props.galleryName !== prevProps.galleryName) {
+      this.setState({ data: [] });
+    }
     if (
       this.props.galleryName !== prevProps.galleryName ||
       this.state.page !== prevState.page
@@ -39,7 +37,6 @@ export class ImageGallery extends Component {
             orientation: `horizontal`,
             per_page: 12,
           },
-          
         });
 
         console.log(responce);
@@ -47,8 +44,6 @@ export class ImageGallery extends Component {
           data: [...prevState.data, ...responce.data.hits],
           totalPictures: responce.data.totalHits,
         }));
-        
-
       } catch (error) {
         console.log(error);
       } finally {
@@ -64,7 +59,6 @@ export class ImageGallery extends Component {
   render() {
     return (
       <>
-        {this.state.loading && <Loader />}
         <AllGallery>
           {this.state.data.map(({ id, webformatURL, tags, largeImageURL }) => (
             <Item
@@ -75,7 +69,12 @@ export class ImageGallery extends Component {
             />
           ))}
         </AllGallery>
-        {this.state.data.length !== 0 && (Math.floor(this.state.totalPictures / 12) > this.state.page ) && <ButtonMore onClic={this.loadMore} />}
+        {this.state.loading && <Loader />}
+
+        {this.state.data.length !== 0 &&
+          Math.floor(this.state.totalPictures / 12) > this.state.page && (
+            <ButtonMore onClic={this.loadMore} />
+          )}
       </>
     );
   }
